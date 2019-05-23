@@ -1,0 +1,24 @@
+{
+  "name": "MayWeather",
+  "version": "1.0.0",
+  "description": "Project MayWeather -- Laboratorio 3 -- Paradigmas Programación 2019",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.config.js --mode development"
+  },
+  "dependencies": {
+    "css-loader": "^2.1.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "react-hot-loader": "^4.8.8",
+    "webpack-dev-server": "^3.4.1"
+  }
+}
