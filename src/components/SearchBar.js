@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Search, Icon } from 'semantic-ui-react';
+import { Search, Icon, Container } from 'semantic-ui-react';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { geolocated } from "react-geolocated";
@@ -52,19 +52,14 @@ class SearchBar extends React.Component {
     this.handleChange(address);
     // If address === geoLocTitle then location is available
     if(address === geoLocTitle){
-      const coords = {
+      this.props.onSelect({
         lat: this.props.coords.latitude,
-        lng: this.props.coords.longitude
-      };
-      console.log(coords);
-      this.props.handleSelect(coords);
+        lng: this.props.coords.longitude,
+      });
     } else {
       geocodeByAddress(address)
         .then(results => getLatLng(results[0]))
-        .then(latLng => {
-          console.log(latLng);
-          this.props.handleSelect(latLng);
-        });
+        .then(latLng => this.props.onSelect(latLng));
         //.catch(error => this.handleError());
     }
   }
@@ -72,7 +67,7 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div className='searchContainer' >
+      <Container className='searchContainer' >
         <script src={urlMaps}></script>
         <PlacesAutocomplete
           value={this.state.address}
@@ -94,7 +89,7 @@ class SearchBar extends React.Component {
                    data.result.title
                 )}
               }
-              fluid={true}
+              fluid={false}
               className='bar'
               icon={this.state.error ? warningIcon : 'search'}
               results={this.transformSuggestions(suggestions)}
@@ -107,18 +102,18 @@ class SearchBar extends React.Component {
             />
           )}
         </PlacesAutocomplete>  
-      </div>
+      </Container>
     );
   }
 }
 
 SearchBar.defaultProps = {
-  handleSelect: () => {},
+  onSelect: () => {},
 };
 
 SearchBar.propTypes = {
-  handleError: PropTypes.func,
-  handleSelect: PropTypes.func,
+  onError: PropTypes.func,
+  onSelect: PropTypes.func,
 };
 
 // Agrego los props de react-geolocated 
