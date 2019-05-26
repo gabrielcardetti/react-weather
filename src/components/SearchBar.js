@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { Search, Container, Icon } from 'semantic-ui-react';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import { geolocated } from "react-geolocated";
 import './SearchBar.css';
 
 const API_KEY = 'AIzaSyApEX5191ILsOjumcklpFwqrx0AT8glUr4';
 const warningIcon = <Icon color='red' name='warning circle' />;
+const geoLocTitle = 'Tu ubicacion';
 
 class SearchBar extends React.Component {
 
@@ -21,17 +23,19 @@ class SearchBar extends React.Component {
     // Bindeo las funciones para que puedan usar this
     this.handleChange = this.handleChange.bind(this);
     this.handleError = this.handleError.bind(this);
+    this.transformSuggestions = this.transformSuggestions.bind(this);
   }
 
   transformSuggestions(suggs) {
-    console.log(suggs);
     // Le doy formato a las suggestions del pleaces-autocomplete
     const map = this.state.hide ? [] :
-    suggs.map((place) => {
-      return(
-        {title: place.description.substring(0,30)}
-      )
-    });
+    (this.props.isGeolocationAvailable && this.props.isGeolocationEnabled ? [{title: geoLocTitle}] : []).concat(
+      suggs.map((place) => {
+        return(
+          {title: place.description.substring(0,30)}
+        )
+      })
+    );
     return map;
   }
 
@@ -46,11 +50,24 @@ class SearchBar extends React.Component {
 
   handleSelect(address) {
     this.handleChange(address);
-    geocodeByAddress(address)
-      .then(results => getLatLng(results[0]))
-      .then(latLng => console.log('Success', latLng))
-      .catch(error => this.handleError());
-    this.props.handleSelect(geocodeByAddress(address));
+    // If address === geoLocTitle then location is available
+    if(address === geoLocTitle){
+      const coords = {
+        lat: this.props.coords.latitude,
+        lng: this.props.coords.longitude
+      }
+      console.log(coords);
+      this.props.handleSelect(coords);
+    } else {
+      geocodeByAddress(address)
+        .then(results => getLatLng(results[0]))
+        .then(latLng => {
+          console.log(latLng);
+          this.props.handleSelect(latLng);
+        });
+        //.catch(error => this.handleError());
+    }
+    
   }
 
 
@@ -97,12 +114,18 @@ class SearchBar extends React.Component {
 }
 
 SearchBar.defaultProps = {
-
-}
+  handleSelect: () => {}
+};
 
 SearchBar.propTypes = {
   handleError: PropTypes.func,
   handleSelect: PropTypes.func,
 };
 
-export default SearchBar;
+// Agrego los props de react-geolocated 
+export default geolocated({
+    positionOptions: {
+        enableHighAccuracy: false,
+    },
+    userDecisionTimeout: 5000,
+})(SearchBar);
