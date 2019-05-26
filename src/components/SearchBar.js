@@ -1,9 +1,11 @@
 import React from 'react';
-import { Search, Container } from 'semantic-ui-react';
+import { Search, Container, Icon } from 'semantic-ui-react';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import './SearchBar.css';
 
 const API_KEY = 'AIzaSyApEX5191ILsOjumcklpFwqrx0AT8glUr4';
+const warningIcon = <Icon color='red' name='warning circle' />;
 
 class SearchBar extends React.Component {
 
@@ -12,14 +14,17 @@ class SearchBar extends React.Component {
 
     this.state = {
       address: '',
-      hide: false
+      hide: false,
+      error: false
     };
-
+    // Bindeo las funciones para que puedan usar this
     this.handleChange = this.handleChange.bind(this);
     this.handleError = this.handleError.bind(this);
   }
 
   transformSuggestions(suggs) {
+    console.log(suggs);
+    // Le doy formato a las suggestions del pleaces-autocomplete
     const map = this.state.hide ? [] :
     suggs.map((place) => {
       return(
@@ -30,12 +35,11 @@ class SearchBar extends React.Component {
   }
 
   handleChange(address) {
-    this.setState({ address: address, hide: false });
+    this.setState({ address: address, hide: false, error: false });
   }
 
   handleError(error) {
-    this.setState({hide: true});
-    console.error("Error");
+    this.setState({hide: true, error: true});
   }
 
   handleSelect(address) {
@@ -43,12 +47,13 @@ class SearchBar extends React.Component {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => console.log('Success', latLng))
-      .catch(error => console.error('Error', error));
+      .catch(error => this.handleError());
   }
+
 
   render() {
     return (
-      <Container fluid={true}>
+      <div className='searchContainer' >
         <script src={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places`}></script>
         <PlacesAutocomplete
           value={this.state.address}
@@ -70,17 +75,20 @@ class SearchBar extends React.Component {
                    data.result.title
                 )}
               }
+              fluid={true}
+              className='bar'
+              icon={this.state.error ? warningIcon : 'search'}
               results={this.transformSuggestions(suggestions)}
-              id="Searchbar"
+              id='searchInput'
               value={this.state.address}
-              size="large"
-              noResultsMessage="No se encontraron resultados"
+              size='big'
+              noResultsMessage='No se encontraron resultados'
               minCharacters={2}
               loading={loading}
             />
           )}
         </PlacesAutocomplete>  
-      </Container>
+      </div>
     );
   }
 }

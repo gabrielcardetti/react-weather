@@ -1,0 +1,14 @@
+.searchContainer {
+  /* Contenedor global del componente */ 
+  align: center;
+}
+
+.bar {
+  /* semantic-ui-react.Search component */
+
+}
+
+#searchInput {
+  /* Input del Search */
+
+}

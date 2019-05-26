@@ -12,8 +12,8 @@ const panes = [
 ];
 const App = () => (
   <div>
-    <Container textAlign='center'>
-      <Header />
+  <Container textAlign='center'>
+  <Header />
     </Container>
     <Container textAlign='justified'>
       <Divider />
