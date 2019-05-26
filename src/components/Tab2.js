@@ -6,7 +6,7 @@ let Tab2 = props => {
   <Tab.Pane >
     <Container>
       <Basicview2 day = "Mon" minTemp = "18 C°" 
-        numberday = "01/05" maxTemp = "35 C°" />
+        numberday = "01/05" maxTemp = " 35 C°"/>
     </Container>
   </Tab.Pane>
   );
