@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Search, Container, Icon } from 'semantic-ui-react';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
@@ -40,6 +41,7 @@ class SearchBar extends React.Component {
 
   handleError(error) {
     this.setState({hide: true, error: true});
+    this.props.handleError();
   }
 
   handleSelect(address) {
@@ -48,6 +50,7 @@ class SearchBar extends React.Component {
       .then(results => getLatLng(results[0]))
       .then(latLng => console.log('Success', latLng))
       .catch(error => this.handleError());
+    this.props.handleSelect(geocodeByAddress(address));
   }
 
 
@@ -92,5 +95,14 @@ class SearchBar extends React.Component {
     );
   }
 }
+
+SearchBar.defaultProps = {
+
+}
+
+SearchBar.propTypes = {
+  handleError: PropTypes.func,
+  handleSelect: PropTypes.func,
+};
 
 export default SearchBar;
