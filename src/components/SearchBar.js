@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Search, Container, Icon } from 'semantic-ui-react';
+import { Search, Icon } from 'semantic-ui-react';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { geolocated } from "react-geolocated";
 import './SearchBar.css';
 
-const API_KEY = 'AIzaSyApEX5191ILsOjumcklpFwqrx0AT8glUr4';
+const API_KEY = '?';
+const urlMaps = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places`;
 const warningIcon = <Icon color='red' name='warning circle' />;
 const geoLocTitle = 'Tu ubicacion';
 
@@ -17,8 +18,7 @@ class SearchBar extends React.Component {
 
     this.state = {
       address: '',
-      hide: false,
-      error: false
+      error: false,
     };
     // Bindeo las funciones para que puedan usar this
     this.handleChange = this.handleChange.bind(this);
@@ -28,7 +28,7 @@ class SearchBar extends React.Component {
 
   transformSuggestions(suggs) {
     // Le doy formato a las suggestions del pleaces-autocomplete
-    const map = this.state.hide ? [] :
+    const map = this.state.error ? [] :
     (this.props.isGeolocationAvailable && this.props.isGeolocationEnabled ? [{title: geoLocTitle}] : []).concat(
       suggs.map((place) => {
         return(
@@ -40,11 +40,11 @@ class SearchBar extends React.Component {
   }
 
   handleChange(address) {
-    this.setState({ address: address, hide: false, error: false });
+    this.setState({ address: address, error: false });
   }
 
   handleError(error) {
-    this.setState({hide: true, error: true});
+    this.setState({ error: true });
     this.props.handleError();
   }
 
@@ -55,7 +55,7 @@ class SearchBar extends React.Component {
       const coords = {
         lat: this.props.coords.latitude,
         lng: this.props.coords.longitude
-      }
+      };
       console.log(coords);
       this.props.handleSelect(coords);
     } else {
@@ -67,14 +67,13 @@ class SearchBar extends React.Component {
         });
         //.catch(error => this.handleError());
     }
-    
   }
 
 
   render() {
     return (
       <div className='searchContainer' >
-        <script src={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places`}></script>
+        <script src={urlMaps}></script>
         <PlacesAutocomplete
           value={this.state.address}
           onChange={this.handleChange}
@@ -114,7 +113,7 @@ class SearchBar extends React.Component {
 }
 
 SearchBar.defaultProps = {
-  handleSelect: () => {}
+  handleSelect: () => {},
 };
 
 SearchBar.propTypes = {
