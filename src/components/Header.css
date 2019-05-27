@@ -1,7 +1,35 @@
+@font-face {
+    font-family: AmiriWeb;
+    font-style: bold;
+    font-weight: 800;
+    src: url('../../public/Amiri-Bold.woff') format('woff');
+}
+
 #headerContainer {
   margin: auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+}
+
+#searchPanel {
   display: flex;
   justify-content: center;
   flex-direction: row;
   flex-wrap: nowrap;
+}
+
+#mwSticker {
+  width: 10%;
+  height: 10%;
+}
+
+.headerTitle {
+  font-family: AmiriWeb; 
+  font-size: 50px;
+  color: #55FF55;
+  margin-left: 20px;
 }
