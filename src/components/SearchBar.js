@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Search, Icon, Container } from 'semantic-ui-react';
+import { Button, Search, Icon, Container } from 'semantic-ui-react';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { geolocated } from "react-geolocated";
@@ -45,10 +45,14 @@ class SearchBar extends React.Component {
 
   handleError(error) {
     this.setState({ error: true });
-    this.props.handleError();
+    this.props.onError();
   }
 
   handleSelect(address) {
+    if(address.length < 3) {
+      this.handleError();
+      return;
+    }
     this.handleChange(address);
     // If address === geoLocTitle then location is available
     if(address === geoLocTitle){
@@ -67,7 +71,7 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <Container className='searchContainer' >
+      <Container>
         <script src={urlMaps}></script>
         <PlacesAutocomplete
           value={this.state.address}
@@ -76,30 +80,43 @@ class SearchBar extends React.Component {
           onError={this.handleError}
         >
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-            <Search
-              // Obtengo los props de PlacesAutocomplete
-              { ...getInputProps() }
-              // Adapto la funcion onSearchChange para use el onChange de PlacesAutocomplete
-              onSearchChange={(e, value) => {
-                getInputProps().onChange({target: value})}
-              }
-              // Esta funcion llama al handler de seleccion de un item
-              onResultSelect={(e, data) => {
-                this.handleSelect(
-                   data.result.title
-                )}
-              }
-              fluid={false}
-              className='bar'
-              icon={this.state.error ? warningIcon : 'search'}
-              results={this.transformSuggestions(suggestions)}
-              id='searchInput'
-              value={this.state.address}
-              size='big'
-              noResultsMessage='No se encontraron resultados'
-              minCharacters={2}
-              loading={loading}
-            />
+            <div className='searchContainer'> 
+              <Search
+                // Obtengo los props de PlacesAutocomplete
+                { ...getInputProps() }
+                // Adapto la funcion onSearchChange para use el onChange de PlacesAutocomplete
+                onSearchChange={(e, value) => {
+                  getInputProps().onChange({target: value})}
+                }
+                // Esta funcion llama al handler de seleccion de un item
+                onResultSelect={(e, data) => {
+                  this.handleSelect(
+                     data.result.title
+                  )}
+                }
+                fluid={false}
+                className='bar'
+                icon={this.state.error ? warningIcon : 'search'}
+                results={this.transformSuggestions(suggestions)}
+                id='searchInput'
+                value={this.state.address}
+                size='big'
+                noResultsMessage='No se encontraron resultados'
+                minCharacters={2}
+                loading={loading}
+              />
+              <Button 
+                id='searchButton' 
+                loading={false} 
+                basic 
+                color='green' 
+                size='large' 
+                onClick={() => this.handleSelect(this.state.address)}
+                disabled={this.state.error}
+              >
+                Buscar
+              </Button>
+            </div>
           )}
         </PlacesAutocomplete>  
       </Container>
@@ -109,6 +126,7 @@ class SearchBar extends React.Component {
 
 SearchBar.defaultProps = {
   onSelect: () => {},
+  onError: () => {},
 };
 
 SearchBar.propTypes = {

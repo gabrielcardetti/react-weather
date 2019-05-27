@@ -18,14 +18,7 @@ const Header = () => (
       <p className='headerTitle' align='left'> Mai <br/> Weather </p>
     </Grid.Row>
     <Grid.Row id='searchPanel'>
-      <Grid.Column width={4}>
-        <SearchBar onSelect={handleSelect} />
-      </Grid.Column>
-      <Grid.Column width={2}>
-        <Button loading={false} basic color='green' size='large'>
-          Buscar
-        </Button>
-      </Grid.Column>
+      <SearchBar onSelect={handleSelect} />
     </Grid.Row>
   </Grid>
 );
