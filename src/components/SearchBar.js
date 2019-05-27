@@ -94,7 +94,7 @@ class SearchBar extends React.Component {
                      data.result.title
                   )}
                 }
-                fluid={false}
+                fluid={true}
                 className='bar'
                 icon={this.state.error ? warningIcon : 'search'}
                 results={this.transformSuggestions(suggestions)}

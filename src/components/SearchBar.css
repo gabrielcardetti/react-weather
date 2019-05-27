@@ -11,6 +11,11 @@
   padding-right: 20px;
   padding-bottom: 5px;
   padding-top: 5px;
+  width: 70%;
+}
+
+.input {
+  width: 100%;
 }
 
 #searchInput {
