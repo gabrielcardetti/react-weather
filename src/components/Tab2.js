@@ -7,14 +7,14 @@ class Tab2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: false,
+      loading: true,
       obj: null
     };
   }
   componentWillMount(){
     const { lat, lng } = this.props.coords;
     processDataForecast(lat,lng).then((result)=>{
-      this.setState({visible:true,obj:result})
+      this.setState({loading:false,obj:result})
     }).catch((error)=>{
       console.log(error)
     })
@@ -24,9 +24,9 @@ class Tab2 extends Component {
   }
   render() {
     return (
-    <Tab.Pane >
+    <Tab.Pane loading={this.state.loading}>
       <Container>
-        {this.state.visible && <ForecastList list={this.state.obj} />}
+         <ForecastList list={this.state.obj} />
       </Container>
     </Tab.Pane>
     );

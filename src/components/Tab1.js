@@ -5,12 +5,6 @@ import { currentWeather } from '../api/OpenWeather';
 
 const degree = ' \xB0';
 
-const Spinner = (
-  <Dimmer active inverted>
-    <Loader size='large'>Loading</Loader>
-  </Dimmer>
-);
-
 class Tab1 extends React.Component {
 
   constructor(props) {
@@ -64,14 +58,12 @@ class Tab1 extends React.Component {
 
   render() {
     return (
-      <Tab.Pane >
-        { this.state.loading ? Spinner :
+      <Tab.Pane loading={this.state.loading}>
           <Container>
             <PrimaryWeather 
               { ...this.state }  
             />
           </Container>
-        }
       </Tab.Pane>
     );
   }
