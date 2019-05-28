@@ -16,7 +16,7 @@ const obj7 = { day:"57", numberday:"160", minTemp:" 12", maxTemp:"0"}
 
 const listTT = {obj1,obj2,obj3,obj4,obj5,obj6,obj7};
 const panes = [
-  { menuItem: 'Tab 1', render: () => <Tab1/> },
+  { menuItem: 'Tab 1', render: () => <Tab1 coords={{lat: 35, lon:139}} /> },
   { menuItem: 'Tab 2', render: () => <Tab2 list={listTT}></Tab2> },
   { menuItem: 'Tab 3', render: () => <Tab3/> },
 ];

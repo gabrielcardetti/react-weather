@@ -4,7 +4,7 @@ const getWeather = (apiUrl) => {
   return new Promise( (resolve,reject) => {
     const key = process.env.OPENWEATHER_API_KEY;
     const unit = 'metric';
-    const url = `${apiUrl}&unit=${unit}&appid=${key}`
+    const url = `${apiUrl}&units=${unit}&appid=${key}`
     fetch(url)
       .then(response => response.json())
       .then(data => {

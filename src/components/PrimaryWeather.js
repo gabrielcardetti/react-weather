@@ -1,5 +1,5 @@
 import React from "react";
-import { Container,Header, Grid, Image, Segment} from 'semantic-ui-react';
+import { Header, Image, Segment} from 'semantic-ui-react';
 import './PrimaryWeather.css';
 
 const img = require  ("./imagenes/clima.jpg");
@@ -12,15 +12,15 @@ const PrimaryWeather = props => (
       {props.weather}
     </div>
     <div className='infoContainer'>
-      <Header size='tiny'>Preassure:{props.preassure}</Header>
-      <Header size='tiny'>Min Temp:{props.minTemp}</Header>
-      <Header size='tiny'>Sunrise:{props.sunrise}</Header>
-      <Header size='tiny'>Wind:{props.wind}</Header> 
+      <Header size='tiny'>Presion: {props.preassure}</Header>
+      <Header size='tiny'>Temperatura Minima: {props.minTemp}</Header>
+      <Header size='tiny'>Amanecer: {props.sunrise}</Header>
+      <Header size='tiny'>Viento: {props.wind}</Header> 
     </div>
     <div className='infoContainer'>
-      <Header size='tiny'>Humidity:{props.humidity}</Header>
-      <Header size='tiny'>Max Temp:{props.maxTemp}</Header>
-      <Header size='tiny'>Sunset:{props.sunset}</Header>
+      <Header size='tiny'>Humedad: {props.humidity}</Header>
+      <Header size='tiny'>Temperatura Maxima: {props.maxTemp}</Header>
+      <Header size='tiny'>Anochecer: {props.sunset}</Header>
     </div>
   </Segment>
 );
