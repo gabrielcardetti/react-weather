@@ -1,8 +1,8 @@
-const getWeather = (lat, lon) => {
+const getWeather = (apiUrl) => {
   return new Promise( (resolve,reject) => {
-    const key = 'f56c89511abe2b1ee423e47a55199c41';
+    const key = process.env.OPENWEATHER_API_KEY
     const unit = 'metric';
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=lat${lat}&lon${lon}&unit=${unit}&appid=${key}`;
+    const url = `${apiUrl}&unit=${unit}&appid=${key}`
     fetch(url)
       .then(response => response.json())
       .then(data => {
@@ -16,4 +16,12 @@ const getWeather = (lat, lon) => {
     });
  }
 
- export { getWeather }
+ const CurrentWeather = (lat,lon) => {
+   const url = `https://api.openweathermap.org/data/2.5/weather?q=lat${lat}&lon${lon}`
+   return getWeather(url)
+ }
+ const ForecastWeather = (lat,lon) => {
+  const url = `api.openweathermap.org/data/2.5/forecast/hourly?lat${lat}&lon${lon}`
+  return getWeather(url)
+ }
+ export { CurrentWeather, ForecastWeather }
