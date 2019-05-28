@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import { Grid, Button, Image } from 'semantic-ui-react';
 import { Header as Huno } from 'semantic-ui-react';
@@ -6,7 +7,6 @@ import './Header.css';
 import '../../public/Amiri-Bold.woff';
 
 const mwSticker = require('../../public/mw_sticker.jpg');
-
 
 class Header extends React.Component {
 
@@ -28,5 +28,13 @@ class Header extends React.Component {
     )
   }
 }
+
+Header.defaultProps = {
+  onSelect: () => {},
+};
+
+Header.propTypes = {
+  onSelect: PropTypes.func,
+};
 
 export default Header;

@@ -5,12 +5,6 @@ import Tab1 from './components/Tab1';
 import Tab2 from './components/Tab2';
 import Tab3 from './components/Tab3';
 
-const panes = [
-  { menuItem: 'Tab 1', render: () => <Tab1/> },
-  { menuItem: 'Tab 2', render: () => <Tab2/> },
-  { menuItem: 'Tab 3', render: () => <Tab3/> },
-];
-
 class App extends React.Component {
 
   constructor(props) {
@@ -24,24 +18,25 @@ class App extends React.Component {
 
   handleSelect(coords) {
     this.setState({ coords: coords, loading: false });
-    console.log('APP', coords);
   }
 
   render() {
     return (
       <div>
-      <Container textAlign='center'>
-      <Header onSelect={(coords) => this.handleSelect(coords)}/>
+        <Container textAlign='center'>
+          <Header onSelect={(coords) => this.handleSelect(coords)}/>
         </Container>
         <Container textAlign='justified'>
           <Divider />
-          <Tab panes={
-            [
-              { manuItem: 'Actual', reder: () => <Tab1 {...this.state} /> },
-              { menuItem: 'Extendido', render: () => <Tab2/> },
-              { menuItem: 'Estadisticas', render: () => <Tab3/> },
-            ]
-          } />
+          { this.state.coords === '' ? null :
+            <Tab
+              panes={[
+                { menuItem: 'Actual', render: () => <Tab1 {...this.state} /> },
+                { menuItem: 'Extendido', render: () => <Tab2/> },
+                { menuItem: 'Estadisticas', render: () => <Tab3/> },
+              ]} 
+            />
+          }
         </Container>
       </div>
     );

@@ -63,11 +63,10 @@ class SearchBar extends React.Component {
     } else {
       geocodeByAddress(address)
         .then(results => getLatLng(results[0]))
-        .then(latLng => this.props.onSelect(latLng));
-        //.catch(error => this.handleError());
+        .then(latLng => this.props.onSelect(latLng))
+        .catch(error => this.handleError());
     }
   }
-
 
   render() {
     return (
