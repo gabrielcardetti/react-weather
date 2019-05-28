@@ -1,0 +1,28 @@
+.searchContainer {
+  /* Contenedor global del componente */ 
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.bar {
+  /* semantic-ui-react.Search component */
+  padding-right: 20px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  width: 70%;
+}
+
+.input {
+  width: 100%;
+}
+
+#searchInput {
+  /* Input del Search */
+}
+
+#searchButton {
+  margin: 10px;
+}
+
