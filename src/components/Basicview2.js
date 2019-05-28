@@ -3,7 +3,7 @@ import { Container, Grid, Image, Segment} from 'semantic-ui-react'
 const img = require  ("./imagenes/clima.jpg");
 
 const Basicview2 = props => (
-  <Container>
+  <Container onClick={props.onClick}>
     <Grid>
       <Segment compact color='teal'>
         <Grid.Row>
