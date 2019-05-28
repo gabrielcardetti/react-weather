@@ -1,13 +1,12 @@
 import React from "react";
 import { Container, Tab} from 'semantic-ui-react';
-import Basicview2 from './Basicview2';
-import List from './List'
+import ForecastList from './ForecastList'
 
 let Tab2 = props => {
   return (
   <Tab.Pane >
     <Container>
-      <List list={props.list} />
+      <ForecastList list={props.list} />
     </Container>
   </Tab.Pane>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Grid, Image, Segment} from 'semantic-ui-react'
 const img = require  ("./imagenes/clima.jpg");
 
-const Basicview2 = props => (
+const ForecastView = props => (
   <Container onClick={props.onClick}>
     <Grid>
       <Segment compact color='teal'>
@@ -23,4 +23,4 @@ const Basicview2 = props => (
   </Container>
 )
 
-export default Basicview2;
+export default ForecastView;

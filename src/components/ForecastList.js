@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Item from './Basicview2'
+import ForecastItem from './ForecastView'
 import { Container, Grid } from 'semantic-ui-react'
 import Details from './Details'
 
-class List extends Component {
+class ForecastList extends Component {
 
   constructor(props) {
     super(props);
@@ -20,7 +20,7 @@ class List extends Component {
     for (const key in list){
       items.push(
         <Grid.Column >
-            <Item {...list[key]} onClick={() => this.click(list[key])}/>
+            <ForecastItem {...list[key]} onClick={() => this.click(list[key])}/>
         </Grid.Column>
       )
     }
@@ -39,4 +39,4 @@ class List extends Component {
     )
   }
 }
-export default List
+export default ForecastList
