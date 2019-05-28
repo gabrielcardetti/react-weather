@@ -1,22 +1,27 @@
+const url = 'https://api.openweathermap.org/data/2.5/';
 
-class OpenWather {
-  GETWeather (city) {
-    return new Promise( (resolve,reject) => {
-      const key = process.env.OPENWEATHER_API_KEY
-      if(city === "") return
-      const url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + ',AR&appid=' + key
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          console.log(data)
-          resolve(data)
-        })
-        .catch(error => {
-          console.error(error)
-          reject(error)
-        })
+const getWeather = (apiUrl) => {
+  return new Promise( (resolve,reject) => {
+    const key = process.env.OPENWEATHER_API_KEY;
+    const unit = 'metric';
+    const url = `${apiUrl}&units=${unit}&appid=${key}`
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        resolve(data)
       })
-   }
+      .catch(error => {
+        console.error(error)
+        reject(error)
+      });
+    });
  }
 
- export default new OpenWather()
+ const currentWeather = (lat,lon) => {
+   return getWeather(`${url}weather?lat=${lat}&lon=${lon}`);
+ }
+ const forecastWeather = (lat,lon) => {
+  return getWeather(`${url}forecast/hourly?lat=${lat}&lon=${lon}`);
+ }
+ export { currentWeather, forecastWeather }
