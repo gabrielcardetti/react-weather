@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ForecastItem from './ForecastView'
-import { Container, Grid } from 'semantic-ui-react'
+import { Container, Grid, Segment } from 'semantic-ui-react'
 import Details from './Details'
 
 class ForecastList extends Component {
@@ -19,9 +19,11 @@ class ForecastList extends Component {
     const items = []
     for (const key in list){
       items.push(
-        <Grid.Column >
+        <Segment id='datailsegment'>
+        <Grid.Column>
             <ForecastItem {...list[key]} onClick={() => this.click(list[key])}/>
         </Grid.Column>
+        </Segment>
       )
     }
     return items

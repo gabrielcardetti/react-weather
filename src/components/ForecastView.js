@@ -3,8 +3,7 @@ import { Container, Grid, Image, Segment} from 'semantic-ui-react'
 const img = require  ("./imagenes/clima.jpg");
 
 const ForecastView = props => (
-  <Container onClick={props.onClick}>
-    <Grid>
+    <Grid onClick={props.onClick}>
       <Segment compact color='teal'>
         <Grid.Row>
           <Grid.Column>{props.day}</Grid.Column>
@@ -20,7 +19,6 @@ const ForecastView = props => (
         </Grid.Row>
       </Segment>
     </Grid>
-  </Container>
 )
 
 export default ForecastView;
