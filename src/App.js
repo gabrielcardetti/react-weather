@@ -10,15 +10,42 @@ const panes = [
   { menuItem: 'Tab 2', render: () => <Tab2/> },
   { menuItem: 'Tab 3', render: () => <Tab3/> },
 ];
-const App = () => (
-  <div>
-  <Container textAlign='center'>
-  <Header />
-    </Container>
-    <Container textAlign='justified'>
-      <Divider />
-      <Tab panes={panes} />
-    </Container>
-  </div>
-);
+
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      coords: '',
+      loading: true,
+    };
+    this.handleSelect = this.handleSelect.bind(this);
+  }
+
+  handleSelect(coords) {
+    this.setState({ coords: coords, loading: false });
+    console.log('APP', coords);
+  }
+
+  render() {
+    return (
+      <div>
+      <Container textAlign='center'>
+      <Header onSelect={(coords) => this.handleSelect(coords)}/>
+        </Container>
+        <Container textAlign='justified'>
+          <Divider />
+          <Tab panes={
+            [
+              { manuItem: 'Actual', reder: () => <Tab1 {...this.state} /> },
+              { menuItem: 'Extendido', render: () => <Tab2/> },
+              { menuItem: 'Estadisticas', render: () => <Tab3/> },
+            ]
+          } />
+        </Container>
+      </div>
+    );
+  }
+}
+
 export default App;
