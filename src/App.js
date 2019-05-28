@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Divider, Tab, TabPane } from 'semantic-ui-react'
+import Header from './components/Header';
 import Tab1 from './components/Tab1'
 import Tab2 from './components/Tab2'
 import Tab3 from './components/Tab3'
@@ -11,17 +12,20 @@ const obj5 = { day:"57", numberday:"160", minTemp:" 12", maxTemp:"0"}
 const obj6 = { day:"57", numberday:"160", minTemp:" 12", maxTemp:"0"}
 const obj7 = { day:"57", numberday:"160", minTemp:" 12", maxTemp:"0"}
 
+
+
 const listTT = {obj1,obj2,obj3,obj4,obj5,obj6,obj7};
 const panes = [
   { menuItem: 'Tab 1', render: () => <Tab1/> },
   { menuItem: 'Tab 2', render: () => <Tab2 list={listTT}></Tab2> },
   { menuItem: 'Tab 3', render: () => <Tab3/> },
-]
-
+];
 const App = () => (
   <div>
-    <Container textAlign='center'>HEADERRR</Container>
-    <Container fluid>
+  <Container textAlign='center'>
+  <Header />
+    </Container>
+    <Container textAlign='justified' fluid>
       <Divider />
       <Tab
         menu={{ 
@@ -30,5 +34,5 @@ const App = () => (
         panes={panes} />
     </Container>
   </div>
-)
+);
 export default App;

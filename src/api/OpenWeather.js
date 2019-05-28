@@ -2,7 +2,7 @@
 class OpenWather {
   GETWeather (city) {
     return new Promise( (resolve,reject) => {
-      const key = 'f56c89511abe2b1ee423e47a55199c41'
+      const key = process.env.OPENWEATHER_API_KEY
       if(city === "") return
       const url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + ',AR&appid=' + key
       fetch(url)
