@@ -17,12 +17,17 @@ const panes = [
   { menuItem: 'Tab 2', render: () => <Tab2 list={listTT}></Tab2> },
   { menuItem: 'Tab 3', render: () => <Tab3/> },
 ]
+
 const App = () => (
   <div>
     <Container textAlign='center'>HEADERRR</Container>
-    <Container textAlign='justified'>
+    <Container fluid>
       <Divider />
-      <Tab panes={panes} />
+      <Tab
+        menu={{ 
+          attached: true, tabular: true, 
+          style: { display: "flex", justifyContent: "center" } }}
+        panes={panes} />
     </Container>
   </div>
 )
