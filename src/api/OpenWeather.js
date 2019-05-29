@@ -10,7 +10,6 @@ const getWeather = (apiUrl) => {
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         resolve(data)
       })
       .catch(error => {
@@ -20,12 +19,28 @@ const getWeather = (apiUrl) => {
     });
  }
 
- const currentWeather = (lat,lon) => {
-   return getWeather(`${url}weather?lat=${lat}&lon=${lon}`);
- }
- const forecastWeather = (lat,lon) => {
-  return getWeather(`${url}forecast?lat=${lat}&lon=${lon}`);
- }
+  const currentUvi = (lat, lon) => {
+    return getWeather(`${url}uvi?lat=${lat}&lon=${lon}`);
+  }
+
+  const forecastUvi = (lat, lon, cnt=5) => {
+    return getWeather(`${url}uvi/forecast?cnt=${cnt}&lat=${lat}&lon=${lon}`);
+  }
+ 
+  const historyUvi = (lat, lon, cnt=30) => {
+    const date = new Date();
+    const end = date.getTime() / 1000 | 0;
+    const start = end - (cnt * 24 * 60 * 60);
+    return getWeather(`${url}uvi/history?start=${start}&end=${end}&lat=${lat}&lon=${lon}`);
+  }
+
+  const currentWeather = (lat,lon) => {
+    return getWeather(`${url}weather?lat=${lat}&lon=${lon}`);
+  }
+
+  const forecastWeather = (lat,lon) => {
+    return getWeather(`${url}forecast?lat=${lat}&lon=${lon}`);
+  }
 
 const groupWeatherByDay = list => {
   //Retorno un mapa("fecha"-> "datos")
@@ -67,4 +82,10 @@ const groupWeatherByDay = list => {
     })
   })
  }
- export { currentWeather, forecastWeather, processDataForecast }
+ export { currentWeather, 
+          forecastWeather, 
+          processDataForecast, 
+          historyUvi,
+          currentUvi,
+          forecastUvi,
+        }
