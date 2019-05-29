@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, Image, Segment} from 'semantic-ui-react'
+import PropTypes from 'prop-types'
 const img = require  ("./imagenes/clima.jpg");
 
 const ForecastView = props => (
