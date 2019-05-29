@@ -21,7 +21,12 @@ class ForecastList extends Component {
       items.push(
         <Segment id='datailsegment'>
         <Grid.Column>
-            <ForecastItem {...list[key]} onClick={() => this.click(list[key])}/>
+            <ForecastItem 
+              day={list[key]['day']}
+              numberday={list[key]['numberday']}
+              minTemp={list[key]['minTemp']}
+              maxTemp={list[key]['maxTemp']}
+               onClick={() => this.click(list[key])}/>
         </Grid.Column>
         </Segment>
       )

@@ -16,6 +16,7 @@ class App extends React.Component {
     this.handleSelect = this.handleSelect.bind(this);
   }
 
+  
   handleSelect(coords) {
     this.setState({ coords: coords, loading: false });
   }

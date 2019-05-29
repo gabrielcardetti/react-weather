@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { Container, Tab, LabelDetail} from 'semantic-ui-react';
 import ForecastList from './ForecastList'
-import {processDataForecast} from '../api/OpenWeather'
+import {processDataForecast} from '../api/helperForecast'
 
 class Tab2 extends Component {
   constructor(props) {
@@ -18,9 +18,6 @@ class Tab2 extends Component {
     }).catch((error)=>{
       console.log(error)
     })
-  }
-  getdata(){
-    
   }
   render() {
     return (
