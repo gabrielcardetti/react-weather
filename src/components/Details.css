@@ -5,6 +5,12 @@
   flex-wrap: wrap;
   margin: 15px;
 }
+#headerDetail {
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
 #datailsContainer {
   margin: auto;
   margin-top: 20px;
