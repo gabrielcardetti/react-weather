@@ -1,6 +1,6 @@
 import React , {Component} from 'react'
 import ChartistGraph from 'react-chartist'
-
+import PropTypes from 'prop-types'
 const options = {
 axisX: {
     // The offset of the labels to the chart area
@@ -42,7 +42,7 @@ axisX: {
 };
 const type = 'Line'
 
-class graph extends Component{
+class GraphForecast extends Component{
 
   constructor(props){
     super(props);
@@ -62,5 +62,7 @@ class graph extends Component{
     return this.state.data && <ChartistGraph data={this.state.data} options={options} type={type} />
   }
 }
-
-export default graph
+GraphForecast.propTypes = {
+  data: PropTypes.object
+}
+export default GraphForecast

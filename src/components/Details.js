@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Details.css'
 import Graph from './GraphForecast'
 import { Header, Grid, Icon } from 'semantic-ui-react'
 
-const details = props => {
+const Details = props => {
     return(
       <div>
         <div id='headerDetail'>
@@ -27,4 +28,13 @@ const details = props => {
       </div>)
 }
 
-export default details
+Details.propTypes = {
+  day: PropTypes.string,
+  numberday: PropTypes.string,
+  humidity: PropTypes.int,
+  pressure: PropTypes.int,
+  minTemp: PropTypes.int,
+  maxTemp: PropTypes.int,
+  graphData: PropTypes.object,
+}
+export default Details

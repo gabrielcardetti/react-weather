@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ForecastItem from './ForecastView'
+import PropTypes from 'prop-types'
 import { Container, Grid, Segment } from 'semantic-ui-react'
 import Details from './Details'
 
@@ -33,8 +34,6 @@ class ForecastList extends Component {
     }
     return items
   }
-
-  
   render() {
     return (
       <Container>
@@ -45,5 +44,8 @@ class ForecastList extends Component {
       </Container>
     )
   }
+}
+ForecastList.propTypes = {
+  data: PropTypes.object
 }
 export default ForecastList
