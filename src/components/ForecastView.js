@@ -1,5 +1,6 @@
 import React from "react";
-import { Container, Grid, Image, Segment} from 'semantic-ui-react'
+import { Grid, Image, Segment} from 'semantic-ui-react'
+import PropTypes from 'prop-types'
 const img = require  ("./imagenes/clima.jpg");
 
 const ForecastView = props => (
@@ -20,5 +21,12 @@ const ForecastView = props => (
       </Segment>
     </Grid>
 )
-
+ForecastView.propTypes = {
+  day: PropTypes.string,
+  numberday: PropTypes.string,
+  humidity: PropTypes.int,
+  pressure: PropTypes.int,
+  minTemp: PropTypes.int,
+  maxTemp: PropTypes.int,
+}
 export default ForecastView;

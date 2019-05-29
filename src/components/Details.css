@@ -1,16 +1,42 @@
+#forecastlist{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 15px;
+}
+#headerDetail {
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
 #datailsContainer {
-    margin: auto;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    flex-wrap: nowrap;
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
   }
-  #datailsegment{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin: 15px;
+#leftDetail {
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  }
+#rightDetail {
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  }
+
+#graphDetail {
+  margin-top: 40px;
+  width: 100%;
   }

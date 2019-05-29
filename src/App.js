@@ -16,6 +16,7 @@ class App extends React.Component {
     this.handleSelect = this.handleSelect.bind(this);
   }
 
+  
   handleSelect(coords) {
     this.setState({ coords: coords, loading: false });
   }
@@ -26,7 +27,7 @@ class App extends React.Component {
         <Container textAlign='center'>
           <Header onSelect={(coords) => this.handleSelect(coords)}/>
         </Container>
-        <Container textAlign='justified'>
+        <Container textAlign='justified' fluid>
           <Divider />
           { this.state.coords === '' ? null :
             <Tab
