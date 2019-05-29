@@ -1,68 +1,37 @@
-import React from 'react'
-import { Container, Tab, Dimmer, Loader } from 'semantic-ui-react'
-import PrimaryWeather from './PrimaryWeather'
-import { currentUvi, historyUvi, forecastUvi } from '../api/OpenWeather';
+import React, {Component} from 'react'
+import { Container, Tab} from 'semantic-ui-react'
+import {processDataForecast} from '../api/helperForecast'
+import ForecastList from './ForecastListUVI'
 
-const degree = ' \xB0';
-
-class Tab3 extends React.Component {
-
+class Tab3 extends Component {
+  
   constructor(props) {
     super(props);
-
     this.state = {
-      current: '',
-      history: [],
-      forecast: [],
       loading: true,
-      error: false,
+      obj: null
     };
-
-    this.getData = this.getData.bind(this);
-    this.handleError = this.handleError.bind(this);
   }
-
-  handleError(error) {
-    console.error(error);
-    this.setState({ error: true });
-  }
-
-  getData() {
+  componentWillMount(){
     const { lat, lng } = this.props.coords;
-    currentUvi(lat, lng)
-      .then( (data) => {
-        this.setState({ current: data.value, });
-      })
-      .catch( error => this.handleError(error));
-    forecastUvi(lat, lng)
-      .then( (data) => {
-        this.setState({ forecast: data, });
-      })
-      .catch( error => this.handleError(error));
-    historyUvi(lat, lng)
-      .then( (data) => {
-        var map = data.map((day, index) => day.value);
-        map.shift();
-        console.log(map);
-        this.setState({ history: map, loading: false });
-      })
-      .catch( error => this.handleError(error));
+    processDataForecast(lat,lng).then((result)=>{
+      this.setState({loading:false,obj:result})
+    }).catch((error)=>{
+      console.log(error)
+    })
   }
-
-  componentDidMount() {
-    this.getData();
+  getdata(){
+    
   }
-
   render() {
     return (
-      <Tab.Pane loading={this.state.loading && !this.state.error}>
-          <Container> 
-            <p> {this.state.current} </p>
-            <p> {this.state.history ? this.state.history[0] : null} </p>
-          </Container>
-      </Tab.Pane>
+    <Tab.Pane loading={this.state.loading}>
+      <Container>
+         <ForecastList list={this.state.obj}/>
+      </Container>
+    </Tab.Pane>
     );
-  }
+    }
 }
 
 export default Tab3
