@@ -19,7 +19,7 @@ class ForecastList extends Component {
     const items = []
     for (const key in list){
       items.push(
-        <Segment id='datailsegment'>
+        <Segment id='forecastlist'>
         <Grid.Column>
             <ForecastItem 
               day={list[key]['day']}

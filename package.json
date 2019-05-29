@@ -7,11 +7,13 @@
     "start": "webpack-dev-server --config webpack.config.js --mode development"
   },
   "dependencies": {
+    "chartist": "^0.11.2",
     "css-loader": "^2.1.1",
     "es6-map": "^0.1.5",
     "file-loader": "^3.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-chartist": "^0.13.3",
     "react-dom": "^16.8.6",
     "react-geolocated": "^2.5.0",
     "react-places-autocomplete": "^7.2.1",

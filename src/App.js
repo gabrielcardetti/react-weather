@@ -27,7 +27,7 @@ class App extends React.Component {
         <Container textAlign='center'>
           <Header onSelect={(coords) => this.handleSelect(coords)}/>
         </Container>
-        <Container textAlign='justified'>
+        <Container textAlign='justified' fluid>
           <Divider />
           { this.state.coords === '' ? null :
             <Tab

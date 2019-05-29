@@ -1,5 +1,6 @@
 import Map from 'es6-map';
 import {forecastWeather} from './OpenWeather'
+import graph from '../components/GraphForecast';
 const months = ["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"]
 
 const end = map => {
@@ -10,14 +11,18 @@ const end = map => {
     let temp = 0
     let humidity = 0
     let pressure = 0
-    // console.log(map[date])
+    let graphData={hours:[], temp:[]}
     map[date].forEach((item)=>{
-      //Busco la temperatura maxima y minima de cada dia
+      const hour = item['dt_txt'].split(' ')[1]
+      graphData['hours'].push(hour)
+      graphData['temp'].push(item['main']['temp'])
+
       minTemp = Math.min(minTemp,item['main']['temp_min']);
       maxTemp = Math.max(maxTemp,item['main']['temp_max']);
       temp += item['main']['temp']
       humidity += item['main']['humidity']
       pressure += item['main']['pressure']
+      
     })
     temp /= map[date].length
     pressure /= map[date].length
@@ -26,7 +31,7 @@ const end = map => {
     const day = new Date(date)
     const ob = {
       day:months[day.getDay()], numberday: date,
-      minTemp, maxTemp, temp, pressure, humidity}
+      minTemp, maxTemp, temp, pressure, humidity, graphData}
     listObj.push(ob)
   }
   return listObj
