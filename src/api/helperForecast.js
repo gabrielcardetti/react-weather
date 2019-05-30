@@ -21,8 +21,8 @@ const end = map => {
       temp += item['main']['temp']
       humidity += item['main']['humidity']
       pressure += item['main']['pressure']
-      
     })
+    const icon = map[date][0]['weather'][0]['icon']
     temp /= map[date].length
     pressure /= map[date].length
     humidity /= map[date].length
@@ -30,7 +30,7 @@ const end = map => {
     const day = new Date(date)
     const ob = {
       day:months[day.getDay()], numberday: date,
-      minTemp, maxTemp, temp, pressure, humidity, graphData}
+      minTemp, maxTemp, temp, pressure, humidity, graphData, icon}
     listObj.push(ob)
   }
   return listObj

@@ -1,7 +1,9 @@
 import React from "react";
 import { Grid, Image, Segment} from 'semantic-ui-react'
 import PropTypes from 'prop-types'
-const img = require  ("./imagenes/clima.jpg");
+import SVG from 'react-inlinesvg';
+import './ForecastView.css'
+import { WeatherIcons } from './WeatherIcons'
 
 const ForecastView = props => (
     <Grid onClick={props.onClick}>
@@ -13,7 +15,10 @@ const ForecastView = props => (
           <Grid.Column>{props.numberday}</Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column><Image src={img} size='tiny' circular/></Grid.Column>
+          <Grid.Column >
+          {console.log(props.icon,WeatherIcons[props.icon],"sssssssssss")}
+          <SVG  className='svg' src={WeatherIcons[props.icon]} />
+          </Grid.Column>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column>{props.minTemp}/{props.maxTemp}</Grid.Column>
@@ -28,5 +33,6 @@ ForecastView.propTypes = {
   pressure: PropTypes.number,
   minTemp: PropTypes.number,
   maxTemp: PropTypes.number,
+  icon: PropTypes.string
 }
 export default ForecastView;

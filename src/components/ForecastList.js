@@ -27,6 +27,7 @@ class ForecastList extends Component {
               numberday={list[key]['numberday']}
               minTemp={list[key]['minTemp']}
               maxTemp={list[key]['maxTemp']}
+              icon={list[key]['icon']}
                onClick={() => this.click(list[key])}/>
         </Grid.Column>
         </Segment>

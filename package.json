@@ -30,7 +30,9 @@
     "babel-loader": "^8.0.6",
     "dotenv-webpack": "^1.7.0",
     "react-hot-loader": "^4.8.8",
+    "react-inlinesvg": "^0.8.4",
     "style-loader": "^0.23.1",
+    "svg-inline-loader": "^0.8.0",
     "webpack-dev-server": "^3.4.1"
   }
 }
