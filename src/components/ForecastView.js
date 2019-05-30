@@ -24,9 +24,9 @@ const ForecastView = props => (
 ForecastView.propTypes = {
   day: PropTypes.string,
   numberday: PropTypes.string,
-  humidity: PropTypes.int,
-  pressure: PropTypes.int,
-  minTemp: PropTypes.int,
-  maxTemp: PropTypes.int,
+  humidity: PropTypes.number,
+  pressure: PropTypes.number,
+  minTemp: PropTypes.number,
+  maxTemp: PropTypes.number,
 }
 export default ForecastView;
