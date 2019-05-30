@@ -1,13 +1,14 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Header, Image, Segment} from 'semantic-ui-react';
 import './PrimaryWeather.css';
-
-const img = require  ("./imagenes/clima.jpg");
+import SVG from 'react-inlinesvg';
+import { WeatherIcons } from './WeatherIcons'
 
 const PrimaryWeather = props => (
   <Segment compact id='container'>
     <div id='imageContainer'>
-      <Image src={img} size='small' circular/>
+      <SVG  src={WeatherIcons[props.icon]} />
       <Header size='huge'>{props.temp}</Header>
       {props.weather}
     </div>

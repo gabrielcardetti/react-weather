@@ -20,6 +20,7 @@ class Tab1 extends React.Component {
       weather: "",
       preassure: "",
       humidity: "",
+      icon: null,
       loading: true,
     };
 
@@ -32,6 +33,7 @@ class Tab1 extends React.Component {
     console.log( lat, lng);
     currentWeather(lat, lng)
       .then( (data) => {
+        console.log(data['weather'][0].icon,'dataaaa')
         const sunset = new Date(data.sys.sunset);
         const sunrise = new Date(data.sys.sunrise);
 
@@ -47,6 +49,7 @@ class Tab1 extends React.Component {
             preassure: data.main.pressure + 'hPa',
             humidity: data.main.humidity + '%',
             loading: false,
+            icon: data['weather'][0].icon
           }
         );
     });

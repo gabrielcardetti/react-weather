@@ -1,3 +1,7 @@
+import React from 'react'
+import PropTypes from 'prop-types';
+import FA from 'react-fontawesome'
+
 const WeatherIcons = {
     '01d': '/animated/day.svg',
     '02d': '/animated/cloudy-day-1.svg',
@@ -18,5 +22,18 @@ const WeatherIcons = {
     '13n': '/animated/snow.svg',
     '50n': '/animated/day.svg',
 }
+const Icon = props => {
+    return (
+      <div id='icon'>
+        <FA className='icon' name={props.name} size='2x' />
+        <p>{props.description + ' ' + props.value}</p>
+      </div>)
+  }
+Icon.propTypes = {
+    name: PropTypes.string,
+    size: PropTypes.string,
+    description: PropTypes.string,
+    value: PropTypes.string,
 
-export { WeatherIcons }
+}
+export { WeatherIcons, Icon }

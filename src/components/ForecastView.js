@@ -16,7 +16,6 @@ const ForecastView = props => (
         </Grid.Row>
         <Grid.Row>
           <Grid.Column >
-          {console.log(props.icon,WeatherIcons[props.icon],"sssssssssss")}
           <SVG  className='svg' src={WeatherIcons[props.icon]} />
           </Grid.Column>
         </Grid.Row>

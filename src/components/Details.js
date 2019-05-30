@@ -2,16 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Details.css'
 import Graph from './Graph'
-import FA from 'react-fontawesome'
+import { Icon } from './WeatherIcons'
 import { Header, Segment } from 'semantic-ui-react'
 
-const Icon = props => {
-  return (
-    <div id='icon'>
-      <FA className='icon' name={props.name} size='2x' />
-      <p>{props.description + ' ' + props.value}</p>
-    </div>)
-}
 const Details = props => {
     return(
       <div>
