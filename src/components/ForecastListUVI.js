@@ -12,9 +12,6 @@ class ForecastListUVI extends Component {
       obj: null
     };
   }
-  click(list){
-      this.setState({visible: !this.state.visible, obj: list})
-  }
   genItem(list){
     const items = []
     for (const key in list){

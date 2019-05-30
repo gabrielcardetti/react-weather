@@ -52,10 +52,20 @@ class GraphForecast extends Component{
   }
   componentWillMount(){
     if(this.props.data != null){
-      const {hours, temp} = this.props.data
-      const data = {labels:hours, series:[temp]}
-      console.log(data)
-      this.setState({data})
+      if(this.props.kind){
+        const {hours, temp} = this.props.data
+        const data = {labels:hours, series:[temp]}
+        this.setState({data})}
+      else{
+        const days = []
+        console.log(this.props,'propps')
+        for(const value in this.props.data){
+          days.push(value)
+        }
+        const data = {labels: days, series:[this.props.data]}
+        console.log(data)
+        this.setState({data})
+      }
     }
   }
   render(){
@@ -63,6 +73,7 @@ class GraphForecast extends Component{
   }
 }
 GraphForecast.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.array,
+  kind: PropTypes.number
 }
 export default GraphForecast
