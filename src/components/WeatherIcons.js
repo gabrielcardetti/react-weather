@@ -33,7 +33,6 @@ Icon.propTypes = {
     name: PropTypes.string,
     size: PropTypes.string,
     description: PropTypes.string,
-    value: PropTypes.string,
-
+    value: PropTypes.number,
 }
 export { WeatherIcons, Icon }

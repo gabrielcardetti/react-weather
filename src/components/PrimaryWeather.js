@@ -6,9 +6,9 @@ import SVG from 'react-inlinesvg';
 import { WeatherIcons } from './WeatherIcons'
 
 const PrimaryWeather = props => (
-  <Segment compact id='container'>
-    <div id='imageContainer'>
-      <SVG  src={WeatherIcons[props.icon]} />
+  <div id='container'>
+    <div id='imageContainer' >
+      <SVG  src={WeatherIcons[props.icon]} className='lsvg'  />
       <Header size='huge'>{props.temp}</Header>
       {props.weather}
     </div>
@@ -23,7 +23,7 @@ const PrimaryWeather = props => (
       <Header size='tiny'>Temperatura Maxima: {props.maxTemp}</Header>
       <Header size='tiny'>Anochecer: {props.sunset}</Header>
     </div>
-  </Segment>
+  </div>
 );
 
 export default PrimaryWeather;

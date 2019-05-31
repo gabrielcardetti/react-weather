@@ -60,7 +60,6 @@ class Tab3 extends React.Component {
             <p> {this.state.history ? this.state.history[0] : null} </p>
           </Container>
           <div>
-            {console.log(this.state.history.length != 0,this.state.history.length)}
             {this.state.history != 0 ? <Graph data={this.state.history} kind={0}/> : null}
           </div>
       </Tab.Pane>
