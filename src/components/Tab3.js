@@ -45,6 +45,13 @@ class Tab3 extends React.Component {
     this.getData();
   }
 
+  componentDidUpdate(prevProps) {
+    if(prevProps.coords !== this.props.coords){
+      this.setState({ loading: true });
+      this.getData();
+    }
+  }
+
   render() {
     return (
       <Tab.Pane loading={this.state.loading && !this.state.error}>
