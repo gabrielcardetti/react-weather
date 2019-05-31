@@ -54,8 +54,6 @@ class Tab3 extends React.Component {
       <Tab.Pane loading={this.state.loading && !this.state.error}>
           <Container>
             <ListUvi list={this.state.forecast}/>
-            <p> {this.state.current} </p>
-            <p> {this.state.history ? this.state.history[0] : null} </p>
           </Container>
           <div>
             {console.log(this.state.history.length != 0,this.state.history.length)}
