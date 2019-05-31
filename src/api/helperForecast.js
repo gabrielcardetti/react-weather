@@ -1,5 +1,5 @@
 import Map from 'es6-map';
-import {forecastWeather} from './OpenWeather'
+import {forecastWeather, forecastUvi} from './OpenWeather'
 const months = ["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"]
 
 const end = map => {
@@ -21,7 +21,7 @@ const end = map => {
       temp += item['main']['temp']
       humidity += item['main']['humidity']
       pressure += item['main']['pressure']
-      
+       
     })
     temp /= map[date].length
     pressure /= map[date].length
@@ -49,6 +49,19 @@ const groupWeatherByDay = list => {
   return days;
 }
 
+const processUviForecast = listObj => {
+  console.log('Sin filtro', listObj);
+  const ret = listObj.map( (item, index) => {
+    const value = item.value;
+    const date = new Date(item.date_iso.split('T')[0]);
+    const day = months[(date.getDay()+6)%7] + ' ' + date.getDate();
+    return { day, value };
+  });
+  console.log('Filtrado', ret);
+
+  return ret;
+}
+
 const processDataForecast = (lat,long) => {
 return new Promise( (resolve,reject) => {
   forecastWeather(lat,long)
@@ -63,4 +76,4 @@ return new Promise( (resolve,reject) => {
 })
 }
 
-export {processDataForecast}
+export {processDataForecast,processUviForecast}

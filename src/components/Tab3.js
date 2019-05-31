@@ -1,7 +1,10 @@
 import React from 'react'
 import { Container, Tab, Dimmer, Loader } from 'semantic-ui-react'
 import Graph from './Graph'
+import ListUvi from './ForecastListUVI'
 import { currentUvi, historyUvi, forecastUvi } from '../api/OpenWeather';
+import { processUviForecast} from '../api/helperForecast'
+
 
 const degree = ' \xB0';
 
@@ -30,13 +33,14 @@ class Tab3 extends React.Component {
   getData() {
     const { lat, lng } = this.props.coords;
     const p1 = currentUvi(lat, lng)
-    const p2 =forecastUvi(lat, lng)
-    const p3 =historyUvi(lat, lng)
+    const p2 = forecastUvi(lat, lng)
+    const p3 = historyUvi(lat, lng)
     Promise.all([p1,p2,p3])
     .then(data => {
+      console.log(data);
       let map = data[2].map((day, index) => day.value);
       map.shift();
-      this.setState({current: data[0].value, forecast: data[1], history: map, loading:false })
+      this.setState({current: data[0].value, forecast: processUviForecast(data[1]), history: map, loading:false })
     })
     .catch(error => this.handleError(error))
   }
@@ -48,7 +52,8 @@ class Tab3 extends React.Component {
   render() {
     return (
       <Tab.Pane loading={this.state.loading && !this.state.error}>
-          <Container> 
+          <Container>
+            <ListUvi list={this.state.forecast}/>
             <p> {this.state.current} </p>
             <p> {this.state.history ? this.state.history[0] : null} </p>
           </Container>

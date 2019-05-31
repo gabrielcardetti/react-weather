@@ -5,3 +5,43 @@
     flex-wrap: wrap;
     margin: 15px;
   }
+
+.green {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border: 3px solid green;
+  background-color: green;
+}
+
+
+.blue {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border: 3px solid blue;
+  background-color: blue;
+}
+
+
+.yellow {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border: 3px solid red;
+}
+
+
+.violet {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border: 3px solid red;
+}
+
+.orange {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border: 3px solid red;
+}

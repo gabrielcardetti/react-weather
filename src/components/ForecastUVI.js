@@ -1,6 +1,12 @@
 import React from "react";
 import {Header,Image, Grid, Segment} from 'semantic-ui-react';
-const img = require  ("./imagenes/clima.jpg");
+import PropTypes from 'prop-types';
+import './DetailsUVI.css'
+
+const color= props =>{
+ const colo = 'blue'
+  return(colo);
+}
 
 const ForecastUVI = props => (
     <Grid>
@@ -9,16 +15,17 @@ const ForecastUVI = props => (
           <Grid.Column><Header textAlign='center' size='middle'>{props.day}</Header></Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column><Header textAlign='center' size='middle'>{props.numberday}</Header></Grid.Column>
+          <Grid.Column><div className={color(props.uvi)}></div></Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column><Image verticalAlign='middle' src={img} size='tiny' circular/></Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column><Header textAlign='center' size='large'>98</Header></Grid.Column>
+          <Grid.Column><Header textAlign='center' size='large'>{props.uvi}</Header></Grid.Column>
         </Grid.Row>
       </Segment>
     </Grid>
 )
+ForecastUVI.propTypes = {
+  day: PropTypes.string,
+  uvi: PropTypes.int,
+}
 
 export default ForecastUVI;

@@ -12,13 +12,15 @@ class ForecastListUVI extends Component {
       obj: null
     };
   }
+
   genItem(list){
     const items = []
     for (const key in list){
       items.push(
         <Segment id='datailsegment'>
         <Grid.Column>
-            <ForecastItem {...list[key]}/>
+            <ForecastItem day={list[key]['day']}
+              uvi={list[key]['value']}/>
         </Grid.Column>
         </Segment>
       )

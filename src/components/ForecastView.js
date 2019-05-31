@@ -1,11 +1,12 @@
 import React from "react";
 import { Grid, Image, Segment} from 'semantic-ui-react'
 import PropTypes from 'prop-types'
+import './Details.css';
 const img = require  ("./imagenes/clima.jpg");
 
 const ForecastView = props => (
     <Grid onClick={props.onClick}>
-      <Segment compact color='teal'>
+      <Segment compact color='teal' id='colordiv'>
         <Grid.Row>
           <Grid.Column>{props.day}</Grid.Column>
         </Grid.Row>
