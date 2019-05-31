@@ -14,7 +14,7 @@ class ForecastListUVI extends Component {
   }
 
   genItem(list){
-    const items = []
+    const items = [];
     for (const key in list){
       items.push(
         <Segment id='datailsegment'>
@@ -27,6 +27,7 @@ class ForecastListUVI extends Component {
     }
     return items
   }
+
   render() {
     return (
       <Container>
