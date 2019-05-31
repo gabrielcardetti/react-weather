@@ -26,7 +26,7 @@ const Icon = props => {
     return (
       <div id='icon'>
         <FA className='icon' name={props.name} size='2x' />
-        <p>{props.description + ' ' + props.value}</p>
+        <p>{props.description + ' ' + Math.floor(props.value)}</p>
       </div>)
   }
 Icon.propTypes = {
