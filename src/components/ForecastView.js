@@ -4,10 +4,12 @@ import PropTypes from 'prop-types'
 import SVG from 'react-inlinesvg';
 import './ForecastView.css'
 import { WeatherIcons } from './WeatherIcons'
+import './Details.css';
+const img = require  ("./imagenes/clima.jpg");
 
 const ForecastView = props => (
     <Grid onClick={props.onClick}>
-      <Segment compact color='teal'>
+      <Segment compact color='teal' id='colordiv'>
         <Grid.Row>
           <Grid.Column>{props.day}</Grid.Column>
         </Grid.Row>

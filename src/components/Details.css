@@ -4,6 +4,11 @@
   justify-content: space-around;
   flex-wrap: wrap;
   margin: 15px;
+  cursor: pointer;
+}
+
+#colordiv:hover{
+background-color: cadetblue;
 }
 #headerDetail {
   margin: auto;
