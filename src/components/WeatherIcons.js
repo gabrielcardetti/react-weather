@@ -26,14 +26,13 @@ const Icon = props => {
     return (
       <div id='icon'>
         <FA className='icon' name={props.name} size='2x' />
-        <p>{props.description + ' ' + props.value}</p>
+        <p>{props.description + ' ' + Math.floor(props.value)}</p>
       </div>)
   }
 Icon.propTypes = {
     name: PropTypes.string,
     size: PropTypes.string,
     description: PropTypes.string,
-    value: PropTypes.string,
-
+    value: PropTypes.number,
 }
 export { WeatherIcons, Icon }

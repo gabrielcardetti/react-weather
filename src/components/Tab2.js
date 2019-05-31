@@ -20,7 +20,7 @@ class Tab2 extends Component {
     processDataForecast(lat,lng).then((result)=>{
       this.setState({loading:false,obj:result})
     }).catch((error)=>{
-      console.log(error)
+      console.error(error)
     })
   }
 

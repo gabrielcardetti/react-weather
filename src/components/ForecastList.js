@@ -20,7 +20,7 @@ class ForecastList extends Component {
     const items = []
     for (const key in list){
       items.push(
-        <Segment id='forecastlist'>
+        <Segment id='forecastlist' key={key}>
         <Grid.Column>
             <ForecastItem 
               day={list[key]['day']}
@@ -28,7 +28,7 @@ class ForecastList extends Component {
               minTemp={list[key]['minTemp']}
               maxTemp={list[key]['maxTemp']}
               icon={list[key]['icon']}
-               onClick={() => this.click(list[key])}/>
+              onClick={() => this.click(list[key])}/>
         </Grid.Column>
         </Segment>
       )
