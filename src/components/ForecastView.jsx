@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/no-unused-prop-types */
 import React from 'react';
 import { Grid, Segment } from 'semantic-ui-react';
@@ -52,6 +53,6 @@ ForecastView.propTypes = {
   minTemp: PropTypes.number.isRequired,
   maxTemp: PropTypes.number.isRequired,
   icon: PropTypes.string.isRequired,
-}
+};
 
 export default ForecastView;
