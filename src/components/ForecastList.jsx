@@ -17,7 +17,7 @@ class ForecastList extends Component {
   }
 
   click(list) {
-    this.setState(prevState => ({ visible: !prevState, obj: list }));
+    this.setState(prevState => ({ visible: !prevState.visible, obj: list }));
   }
 
   genItem(list) {
@@ -35,7 +35,7 @@ class ForecastList extends Component {
               onClick={() => this.click(list[key])}
             />
           </Grid.Column>
-        </Segment>,
+        </Segment>
       );
     }
     return items;
