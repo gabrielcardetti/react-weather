@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Tab1 from './components/Tab1';
 import Tab2 from './components/Tab2';
 import Tab3 from './components/Tab3';
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -30,11 +31,11 @@ class App extends Component {
           <Divider />
           { coords === '' ? null
             : (
-              <Tab
-                panes={[
-                  { menuItem: 'Actual', render: () => <Tab1 {...this.state} /> },
-                  { menuItem: 'Extendido', render: () => <Tab2 {...this.state} /> },
-                  { menuItem: 'Estadisticas', render: () => <Tab3 {...this.state} /> },
+              <Tab className="body"
+                panes={[ 
+                  { menuItem: 'Actual', render: () => <Tab1 {...this.state}/> },
+                  { menuItem: 'Extendido', render: () => <Tab2 {...this.state}/> },
+                  { menuItem: 'Estadisticas', render: () => <Tab3 {...this.state}/> },
                 ]}
               />
             )
