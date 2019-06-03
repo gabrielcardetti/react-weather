@@ -3,7 +3,7 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-console */
 import React from 'react';
-import { Container, Tab, Progress } from 'semantic-ui-react';
+import { Container, Tab, Progress, Header } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import Graph from './Graph';
 import ListUvi from './ForecastListUVI';
@@ -88,14 +88,17 @@ class Tab3 extends React.Component {
     const { state, value, color } = current;
     return (
       <Tab.Pane loading={loading && !error}>
+        <Header>Current UVI Index:</Header>
         <Progress
           label={state}
           percent={value * (100 / 12)}
           color={color}
         />
+        <Header> Forescasted UVI index:</Header>
         <Container>
           <ListUvi list={forecast} />
         </Container>
+        <Header>Last 30 days UVI Index:</Header>
         <div>
           {history.length !== 0 ? <Graph data={history} kind={0} /> : null}
         </div>

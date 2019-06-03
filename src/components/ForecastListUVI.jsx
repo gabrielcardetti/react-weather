@@ -30,7 +30,6 @@ const ForecastListUVI = (props) => {
   const { list } = props;
   return (
     <Container>
-      <Header> Forescasted UVI index:</Header>
       <Segment compact id="datailsegment">
         {genItem(list)}
       </Segment>
