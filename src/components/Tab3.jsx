@@ -3,7 +3,9 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-console */
 import React from 'react';
-import { Container, Tab, Progress, Header } from 'semantic-ui-react';
+import {
+  Container, Tab, Progress, Header,
+} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import Graph from './Graph';
 import ListUvi from './ForecastListUVI';

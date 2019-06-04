@@ -35,7 +35,7 @@ class ForecastList extends Component {
               onClick={() => this.click(list[key])}
             />
           </Grid.Column>
-        </Segment>
+        </Segment>,
       );
     }
     return items;

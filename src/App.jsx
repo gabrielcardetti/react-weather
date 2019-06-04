@@ -31,11 +31,12 @@ class App extends Component {
           <Divider />
           { coords === '' ? null
             : (
-              <Tab className="body"
-                panes={[ 
-                  { menuItem: 'Actual', render: () => <Tab1 {...this.state}/> },
-                  { menuItem: 'Extendido', render: () => <Tab2 {...this.state}/> },
-                  { menuItem: 'Estadisticas', render: () => <Tab3 {...this.state}/> },
+              <Tab
+                className="body"
+                panes={[
+                  { menuItem: 'Actual', render: () => <Tab1 {...this.state} /> },
+                  { menuItem: 'Extendido', render: () => <Tab2 {...this.state} /> },
+                  { menuItem: 'Estadisticas', render: () => <Tab3 {...this.state} /> },
                 ]}
               />
             )

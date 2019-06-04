@@ -4,7 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Container, Grid, Segment, Header,
+  Container, Grid, Segment,
 } from 'semantic-ui-react';
 import ForecastItem from './ForecastUVI';
 import './DetailsUVI.css';
