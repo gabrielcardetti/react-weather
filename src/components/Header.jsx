@@ -5,7 +5,7 @@ import SearchBar from './SearchBar';
 import './Header.css';
 import '../../public/Amiri-Bold.woff';
 
-const mwSticker = require('../../public/mw_sticker.jpg');
+const mwSticker = require('../../public/mw_sticker.png');
 
 class Header extends Component {
   handleSelect(coords) {
