@@ -1,14 +1,18 @@
 #container {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
   margin: 15px;
 }
 
 #imageContainer {
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
+  flex-grow: 2;
+  margin: 15px;
 }
 
 .infoContainer {
