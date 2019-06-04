@@ -46,9 +46,8 @@ class Tab1 extends React.Component {
     const { lat, lng } = coords;
     currentWeather(lat, lng)
       .then((data) => {
-        const sunset = new Date(data.sys.sunset);
-        const sunrise = new Date(data.sys.sunrise);
-
+        const sunset = new Date(data.sys.sunset * 1000);
+        const sunrise = new Date(data.sys.sunrise * 1000);
         this.setState(
           {
             wind: `${data.wind.speed}m/s`,
