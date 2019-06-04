@@ -27,6 +27,7 @@ const Details = (props) => {
         </div>
       </div>
       <div id="graphDetail">
+        <Header>Grafica de Temperatura:</Header>
         <Graph data={graphData} kind={1} />
       </div>
     </div>

@@ -88,17 +88,17 @@ class Tab3 extends React.Component {
     const { state, value, color } = current;
     return (
       <Tab.Pane loading={loading && !error}>
-        <Header>Current UVI Index:</Header>
+        <Header>Indice UVI actual:</Header>
         <Progress
           label={state}
           percent={value * (100 / 12)}
           color={color}
         />
-        <Header> Forescasted UVI index:</Header>
+        <Header> Indice UVI previsto:</Header>
         <Container>
           <ListUvi list={forecast} />
         </Container>
-        <Header>Last 30 days UVI Index:</Header>
+        <Header>Indice UVI ultimos 30 dias:</Header>
         <div>
           {history.length !== 0 ? <Graph data={history} kind={0} /> : null}
         </div>

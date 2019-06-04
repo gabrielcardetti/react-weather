@@ -20,7 +20,7 @@ const PrimaryWeather = (props) => {
       <div className="infoContainer">
         <Header size="tiny">{`Presion: ${preassure}`}</Header>
         <Header size="tiny">{`Temperatura Minima: ${minTemp}`}</Header>
-        <Header size="tiny">{`Amanecer: $${sunrise}`}</Header>
+        <Header size="tiny">{`Amanecer: ${sunrise}`}</Header>
         <Header size="tiny">{`Viento: ${wind}`}</Header>
       </div>
       <div className="infoContainer">
