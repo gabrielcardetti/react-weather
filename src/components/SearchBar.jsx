@@ -112,7 +112,7 @@ class SearchBar extends Component {
                 id="searchButton"
                 loading={false}
                 basic
-                color="green"
+                color="black"
                 size="large"
                 onClick={() => this.handleSelect(address)}
                 disabled={error}
