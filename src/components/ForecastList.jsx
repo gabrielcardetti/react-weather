@@ -54,12 +54,8 @@ class ForecastList extends Component {
     );
   }
 }
-ForecastList.defaultProps = {
-  list: null,
-  data: null,
-};
+
 ForecastList.propTypes = {
-  list: PropTypes.array,
-  data: PropTypes.object,
+  list: PropTypes.array.isRequired,
 };
 export default ForecastList;

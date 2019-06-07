@@ -18,10 +18,9 @@ class Tab1 extends React.Component {
       sunrise: '',
       minTemp: '',
       maxTemp: '',
-      weather: '',
       preassure: '',
       humidity: '',
-      icon: null,
+      icon: '',
       loading: true,
     };
 
@@ -56,7 +55,6 @@ class Tab1 extends React.Component {
             sunrise: `${sunrise.getHours()}: ${sunrise.getMinutes()}Hs`,
             minTemp: data.main.temp_min + degree,
             maxTemp: data.main.temp_max + degree,
-            weather: data.weather.main,
             preassure: `${data.main.pressure}hPa`,
             humidity: `${data.main.humidity}%`,
             loading: false,

@@ -49,7 +49,9 @@ class Tab2 extends Component {
     return (
       <Tab.Pane loading={loading}>
         <Container>
-          <ForecastList list={obj} />
+          {obj != null ? (
+            <ForecastList list={obj} />
+          ) : null }
         </Container>
       </Tab.Pane>
     );

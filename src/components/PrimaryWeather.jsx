@@ -8,14 +8,13 @@ import { WeatherIcons } from './WeatherIcons';
 
 const PrimaryWeather = (props) => {
   const {
-    icon, temp, weather, preassure, minTemp, sunrise, wind, humidity, maxTemp, sunset,
+    icon, temp, preassure, minTemp, sunrise, wind, humidity, maxTemp, sunset,
   } = props;
   return (
     <div id="container">
       <div id="imageContainer">
         <SVG src={WeatherIcons[icon]} className="lsvg" />
         <Header size="huge">{temp}</Header>
-        {weather}
       </div>
       <div className="infoContainer">
         <Header size="tiny">{`Presion: ${preassure}`}</Header>
@@ -32,14 +31,9 @@ const PrimaryWeather = (props) => {
   );
 };
 
-PrimaryWeather.defaultProps = {
-  icon: '',
-  weather: '',
-};
 PrimaryWeather.propTypes = {
-  icon: PropTypes.string,
+  icon: PropTypes.string.isRequired,
   temp: PropTypes.string.isRequired,
-  weather: PropTypes.string,
   preassure: PropTypes.string.isRequired,
   minTemp: PropTypes.string.isRequired,
   sunrise: PropTypes.string.isRequired,

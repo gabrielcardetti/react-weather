@@ -17,7 +17,7 @@ const ForecastUVI = (props) => {
     <Grid>
       <Segment compact color="teal">
         <Grid.Row>
-          <Grid.Column><Header textAlign="center" size="middle">{day}</Header></Grid.Column>
+          <Grid.Column><Header textAlign="center" size="medium">{day}</Header></Grid.Column>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column><div className={`${color(uvi)} color`} /></Grid.Column>

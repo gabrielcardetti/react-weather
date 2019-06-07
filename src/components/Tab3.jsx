@@ -58,7 +58,6 @@ class Tab3 extends React.Component {
     const p3 = historyUvi(lat, lng);
     Promise.all([p1, p2, p3])
       .then((data) => {
-        console.log(data);
         const map = data[2].map(day => day.value);
         map.shift();
         this.setState(

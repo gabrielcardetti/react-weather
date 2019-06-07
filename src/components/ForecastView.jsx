@@ -39,17 +39,10 @@ const ForecastView = (props) => {
   );
 };
 
-ForecastView.defaultProps = {
-  onClick: () => {},
-  humidity: null,
-  pressure: null,
-};
 ForecastView.propTypes = {
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
   day: PropTypes.string.isRequired,
   numberday: PropTypes.string.isRequired,
-  humidity: PropTypes.number,
-  pressure: PropTypes.number,
   minTemp: PropTypes.number.isRequired,
   maxTemp: PropTypes.number.isRequired,
   icon: PropTypes.string.isRequired,

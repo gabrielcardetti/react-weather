@@ -13,7 +13,7 @@ const genItem = (list) => {
   const items = [];
   for (const key in list) {
     items.push(
-      <Segment id="datailsegment">
+      <Segment id="datailsegment" key={key}>
         <Grid.Column>
           <ForecastItem
             day={list[key].day}
@@ -36,10 +36,8 @@ const ForecastListUVI = (props) => {
     </Container>
   );
 };
-ForecastListUVI.defaultProps = {
-  list: null,
-};
+
 ForecastListUVI.propTypes = {
-  list: PropTypes.array,
+  list: PropTypes.array.isRequired,
 };
 export default ForecastListUVI;
