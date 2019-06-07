@@ -73,7 +73,6 @@ class SearchBar extends Component {
     const { address, error } = this.state;
     return (
       <Container>
-        <script src={urlMaps} />
         <PlacesAutocomplete
           value={address}
           onChange={this.handleChange}
