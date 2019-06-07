@@ -8,8 +8,6 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 import { geolocated } from 'react-geolocated';
 import './SearchBar.css';
 
-const API_KEY = '?';
-const urlMaps = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places`;
 const geoLocTitle = 'Tu ubicacion';
 const warningIcon = <Icon color="red" name="warning circle" />;
 
