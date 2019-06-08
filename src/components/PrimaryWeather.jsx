@@ -13,7 +13,9 @@ const PrimaryWeather = (props) => {
   return (
     <div id="container">
       <div id="imageContainer">
-        <SVG src={WeatherIcons[icon]} className="lsvg" />
+        {WeatherIcons[icon]
+          ? <SVG src={WeatherIcons[icon]} className="lsvg" />
+          : null}
         <Header size="huge">{temp}</Header>
       </div>
       <div className="infoContainer">
