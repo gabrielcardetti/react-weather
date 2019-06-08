@@ -18,7 +18,7 @@
   width: 100%;
 }
 
-#searchButton {
-  margin: 10px;
+.searchButton {
+  margin: 7px !important;
 }
 

@@ -8,7 +8,6 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 import { geolocated } from 'react-geolocated';
 import './SearchBar.css';
 
-const geoLocTitle = 'Tu ubicacion';
 const warningIcon = <Icon color="red" name="warning circle" />;
 
 class SearchBar extends Component {
@@ -22,20 +21,25 @@ class SearchBar extends Component {
     // Bindeo las funciones para que puedan usar this
     this.handleChange = this.handleChange.bind(this);
     this.handleError = this.handleError.bind(this);
+    this.handleLocation = this.handleLocation.bind(this);
     this.transformSuggestions = this.transformSuggestions.bind(this);
   }
 
   transformSuggestions(suggs) {
     // Le doy formato a las suggestions del pleaces-autocomplete
     const { error } = this.state;
-    const { isGeolocationAvailable, isGeolocationEnabled } = this.props;
-    const map = error ? []
-      : (isGeolocationAvailable && isGeolocationEnabled ? [{ title: geoLocTitle }] : []).concat(
-        suggs.map(place => (
-          { title: place.description.substring(0, 30) }
-        )),
-      );
+    const map = error ? [] : suggs.map(
+      place => ({ title: place.description.substring(0, 30) }),
+    );
     return map;
+  }
+
+  handleLocation() {
+    const { onSelect, coords } = this.props;
+    onSelect({
+      lat: coords.latitude,
+      lng: coords.longitude,
+    });
   }
 
   handleChange(address) {
@@ -49,28 +53,21 @@ class SearchBar extends Component {
   }
 
   handleSelect(address) {
-    const { onSelect, coords } = this.props;
+    const { onSelect } = this.props;
     if (address.length < 3) {
       this.handleError();
       return;
     }
     this.handleChange(address);
-    // If address === geoLocTitle then location is available
-    if (address === geoLocTitle) {
-      onSelect({
-        lat: coords.latitude,
-        lng: coords.longitude,
-      });
-    } else {
-      geocodeByAddress(address)
-        .then(results => getLatLng(results[0]))
-        .then(latLng => onSelect(latLng))
-        .catch(() => this.handleError());
-    }
+    geocodeByAddress(address)
+      .then(results => getLatLng(results[0]))
+      .then(latLng => onSelect(latLng))
+      .catch(() => this.handleError());
   }
 
   render() {
     const { address, error } = this.state;
+    const { isGeolocationAvailable, isGeolocationEnabled } = this.props;
     return (
       <Container>
         <PlacesAutocomplete
@@ -107,17 +104,32 @@ class SearchBar extends Component {
                 minCharacters={2}
                 loading={loading}
               />
-              <Button
-                id="searchButton"
-                loading={false}
-                basic
-                color="black"
-                size="large"
-                onClick={() => this.handleSelect(address)}
-                disabled={error}
-              >
-                Buscar
-              </Button>
+              <div>
+                <Button
+                  id="searchButton"
+                  className="searchButton"
+                  loading={false}
+                  basic
+                  color="black"
+                  size="large"
+                  onClick={() => this.handleSelect(address)}
+                  disabled={error || loading}
+                >
+                  Buscar
+                </Button>
+                <Button
+                  className="searchButton"
+                  id="locationButton"
+                  loading={false}
+                  basic
+                  color="black"
+                  size="large"
+                  onClick={() => this.handleLocation()}
+                  disabled={!isGeolocationAvailable || !isGeolocationEnabled}
+                >
+                  Tu ubicacion
+                </Button>
+              </div>
             </div>
           )}
         </PlacesAutocomplete>
