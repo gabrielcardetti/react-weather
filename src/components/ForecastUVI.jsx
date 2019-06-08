@@ -5,7 +5,7 @@ import './DetailsUVI.css';
 
 const color = (uvi) => {
   if (uvi >= 11) return 'violet';
-  if (uvi >= 8) return 'red';
+  if (uvi >= 8) return 'redd';
   if (uvi >= 6) return 'orange';
   if (uvi >= 3) return 'yellow';
   return 'green';
