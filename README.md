@@ -15,13 +15,13 @@ $ npm --version
 v6.9.0
 ```
 ## Node y Npm instalación
-  #### Ubuntu
+#### Ubuntu
     
     $ sudo apt update
     $ sudo apt install nodejs
     $ sudo apt install npm
     
- #### Arch
+#### Arch
     
     $ sudo pacman -Syyu
     $ sudo pacman -S nodejs
