@@ -52,6 +52,7 @@ Para poder configurar la key de google maps hay que seguir [estos](https://devel
 ```
 
 Lamentablemente google maps nos provee con una key que nos permite una sola busqueda por dia, el proyecto viene configurado con nuestra key gratuita, si quieren hacer mas busquedas para poder probar correctamente la web van a tener que colocar otra key.
+Cuando nosotros comenzamos a hacer el laboratorio conseguimos una Key que funcionaba perfectamente, así logramos probar todo lo necesario para comprobar su buen funcionamiento, pero a ultimo momento la key caduco, por eso ahora tenemos la prueba gratuita. Es decir, con la Key que nosotros ofrecemos solo podes hacer una "request" si no se consigue otra key con licencia para probar nuestra app se recomiendo hacer Copy-paste de algún lugar elegido o probarla con "Tu ubicación".
 
 ## Estilo de codificación ⌨️
 
